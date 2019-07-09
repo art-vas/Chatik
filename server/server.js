@@ -10,12 +10,12 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const passport = require('passport');
-const { Strategy } = require('passport-jwt');
+const {Strategy} = require('passport-jwt');
 
-const { jwt } = require('./config');
+const {jwt} = require('./config');
 
-passport.use(new Strategy(jwt, function(jwt_payload, done) {
-    if(jwt_payload != void(0)) return done(false, jwt_payload);
+passport.use(new Strategy(jwt, function (jwt_payload, done) {
+    if (jwt_payload !== void (0)) return done(false, jwt_payload);
     done();
 }));
 
@@ -29,7 +29,7 @@ nunjucks.configure('./client/views', {
 });
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 
 // parse application/json
 app.use(bodyParser.json());

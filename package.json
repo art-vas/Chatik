@@ -4,7 +4,8 @@
   "description": "NodeJS chat",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js"
   },
   "keywords": [
     "chat",
@@ -24,7 +25,19 @@
     "mongoose": "^4.11.7",
     "nunjucks": "^3.0.1",
     "passport": "^0.4.0",
+    "passport-google-oauth2": "^0.2.0",
     "passport-jwt": "^3.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "socket.io": "^2.0.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/art-vas/Chatik.git"
+  },
+  "bugs": {
+    "url": "https://github.com/art-vas/Chatik/issues"
+  },
+  "homepage": "https://github.com/art-vas/Chatik#readme"
 }

@@ -1,4 +1,3 @@
-
 "use strict";
 
 const mongoose = require('mongoose');
@@ -14,8 +13,8 @@ const UsersSchema = new Schema({
     collection: "UsersCollection"
 });
 
-UsersSchema.pre('save', function(next) {
-    if(this.isModified('password') || this.isNew()) this.password = bcrtypt.hashSync(this.password, 12);
+UsersSchema.pre('save', function (next) {
+    if (this.isModified('password') || this.isNew()) this.password = bcrtypt.hashSync(this.password, 12);
     next();
 });
 

@@ -1,8 +1,11 @@
 "use strict";
 
-function ExtractJwt (req) {
+/**
+ * @return {null}
+ */
+function ExtractJwt(req) {
     let token = null;
-    if(req.cookies && req.cookies.token != void(0)) token = req.cookies['token'];
+    if (req.cookies && req.cookies.token !== void (0)) token = req.cookies['token'];
     return token;
 }
 

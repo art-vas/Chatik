@@ -5,14 +5,15 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const config = require('./config');
 
-function auth (socket, next) {
+function auth(socket, next) {
 
     // Parse cookie
-    cookieParser()(socket.request, socket.request.res, () => {});
+    cookieParser()(socket.request, socket.request.res, () => {
+    });
 
     // JWT authenticate
     passport.authenticate('jwt', {session: false}, function (error, decryptToken, jwtError) {
-        if(!error && !jwtError && decryptToken) {
+        if (!error && !jwtError && decryptToken) {
             next(false, {username: decryptToken.username, id: decryptToken.id});
         } else {
             next('guest');
@@ -24,11 +25,11 @@ function auth (socket, next) {
 module.exports = io => {
     io.on('connection', function (socket) {
         console.log('a user connected');
-        socket.on('disconnect', function(){
+        socket.on('disconnect', function () {
             console.log('user disconnected');
         });
         auth(socket, (guest, user) => {
-            if(!guest) {
+            if (!guest) {
                 socket.join('all');
                 socket.username = user.username;
                 socket.emit('connected', `you are connected to chat as ${user.username}`);
@@ -43,7 +44,7 @@ module.exports = io => {
             };
 
             MessageModel.create(obj, err => {
-                if(err) return console.error("MessageModel", err);
+                if (err) return console.error("MessageModel", err);
                 socket.emit("message", obj);
                 socket.to('all').emit("message", obj);
             });
@@ -56,8 +57,8 @@ module.exports = io => {
                 .limit(50)
                 .sort({date: 1})
                 .lean()
-                .exec( (err, messages) => {
-                    if(!err){
+                .exec((err, messages) => {
+                    if (!err) {
                         socket.emit("history", messages);
                     }
                 })
