@@ -2,8 +2,8 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 const MessageSchema = new Schema({
+    id_message:{type:String},
     date: {type: Date},
     content: {type: String},
     username: {type: String}

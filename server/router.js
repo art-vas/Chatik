@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 
 function checkAuth(req, res, next) {
     passport.authenticate('jwt', {session: false}, (err, decryptToken, jwtError) => {
-        if (jwtError != void (0) || err != void (0)) return res.render('index.html', {error: err || jwtError});
+        if (jwtError !== void (0) || err !== void (0)) return res.render('index.html', {error: err || jwtError});
         req.user = decryptToken;
         next();
     })(req, res, next);
